@@ -1,0 +1,15 @@
+body {
+background-image: url(https://www.thevintagenews.com/wp-content/uploads/2017/09/istock-155391040.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+
+h1 {
+
+    font-family: 'Mystery Quest', cursive;
+    font-size: 100px;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+}
