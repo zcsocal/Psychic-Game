@@ -1,15 +1,9 @@
-/* Variables for game */
-
+/* These are the global variables for the game */
 var won = 0;
 var lost = 0;
-
 var attempts = 10;
-
 var usedLetters = [];
-
 var psychicLetter = psychicLetter;
-
-//All the possible letter choices for the computer
 var letters = "qwertyuiopasdfghjklzxcvbnm"
 
 
@@ -19,6 +13,7 @@ var letters = "qwertyuiopasdfghjklzxcvbnm"
 
 psychicLetter = letters[Math.floor(Math.random() * letters.length)]; 
 
+//Test to make sure it's working. It does.
 console.log(psychicLetter);
 
 function jsGuess() {
@@ -30,16 +25,34 @@ function jsGuess() {
 document.onkeyup = function (event) {
     var playerGuess = event.key;
 
-    //Correct guesses
-    //If the player guesses correctly, add to the wins and make attemps equal 10. Reset used letters to empty.
+//Correct guesses
+//If the player guesses correctly, add to the wins and make attemps equal 10. Reset used letters to empty.
+    if (playerGuess !== psychicLetter) {
+        alert("Choose letters only!");
+    }
+
     if (playerGuess === psychicLetter) {
         won++;
         attempts = 10;
         usedLetters = []; //empty array
+        alert("Yay! You won. Week going!");
+
+        //Then we run the guess function over again.
+        psychicLetter = letters[Math.floor(Math.random() * letters.length)]; 
+        console.log(psychicLetter);
+
+        function jsGuess() {
+            psychicLetter = letters[Math.floor(Math.random() * letters.length)];
+            console.log(psychicLetter); 
+
+}
+
     }
     
-    
+     
     //Incorrect guesses
+
+
     //If the player's guess does not egual the psychic guess, then subtract an attempt.
     if (playerGuess !== psychicLetter) {
         attempts--;
@@ -50,9 +63,8 @@ document.onkeyup = function (event) {
         lost ++;
         attempts = 10;
         usedLetters = [];
+        alert("Sorry, you lost! Try again.");
     }
-
-
 
 
     //Inccorect guesses are output onto page
@@ -66,9 +78,6 @@ document.onkeyup = function (event) {
     }
 
 
-
-
-
     //Output these values to html
     document.getElementById('won').innerHTML = won;
     document.getElementById('lost').innerHTML = lost;
@@ -78,3 +87,4 @@ document.onkeyup = function (event) {
 
 
 }
+
